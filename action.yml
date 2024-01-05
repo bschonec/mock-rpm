@@ -30,10 +30,11 @@ runs:
     - id: create-container
       run: |
         mkdir -p ${{ inputs.result-dir }}
-        podman run -dt --privileged -v ${{ inputs.result-dir }}:/out fedora:latest > action.cid
+        podman run -dt --privileged -v ${{ inputs.result-dir }}:/out quay.io/brian_schonecker/mock/mock > action.cid
       shell: bash
 
     - id: init-mock-env
+      if: false
       run: |
         cid=$(cat action.cid)
         podman exec $cid dnf install -y mock
