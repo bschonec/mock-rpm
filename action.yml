@@ -37,6 +37,7 @@ runs:
       if: false
       run: |
         cid=$(cat action.cid)
+        echo "This is RPMS."
       shell: bash
 
     - id: build
